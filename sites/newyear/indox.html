@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обратный отсчет до Нового 2026 года</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js"></script>
+</head>
+<body>
+    <div class="snowflakes" id="snowflakes"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Обратный отсчет до Нового года</h1>
+            <p>До наступления 2026 года осталось совсем немного времени. Следите за отсчетом и готовьтесь к празднику!</p>
+        </div>
+        
+        <div class="year-display">2026</div>
+        
+        <div class="countdown-container">
+            <h2 class="countdown-title">До Нового года осталось:</h2>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">дней</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">часов</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">минут</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">секунд</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <h2 class="progress-title">Прогресс года</h2>
+            <div class="progress-bar">
+                <div class="progress" id="year-progress"></div>
+            </div>
+            <div class="progress-text">
+                <span>Начало 2025</span>
+                <span id="progress-percent">0%</span>
+                <span>Конец 2025</span>
+            </div>
+        </div>
+        
+        <div class="new-year-message" id="new-year-message">
+            С Новым 2026 годом! 🎉
+        </div>
+        
+        <div class="facts-container">
+            <div class="fact-card">
+                <div class="fact-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="fact-title">Время летит</h3>
+                <p class="fact-text">Среднестатистический человек тратит около 5 лет жизни на ожидание. Не тратьте время зря!</p>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">
+                    <i class="fas fa-snowflake"></i>
+                </div>
+                <h3 class="fact-title">Новогодняя традиция</h3>
+                <p class="fact-text">Традиция украшать ёлку на Новый год пришла из Германии и распространилась по всему миру.</p>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3 class="fact-title">Время подарков</h3>
+                <p class="fact-text">Лучшее время для покупки новогодних подарков - середина декабря, когда выбор ещё большой, а очереди небольшие.</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Сайт с обратным отсчетом до Нового 2026 года | Сделано с ❤️ и новогодним настроением | DeepSeek</p>
+            <p id="current-date"></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0c2461, #1e3799, #4a69bd);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+            animation: fadeIn 2s ease;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #f6d365, #fda085);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .year-display {
+            font-size: 10rem;
+            font-weight: bold;
+            color: #ffdd59;
+            text-shadow: 0 0 30px rgba(255, 221, 89, 0.7);
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+        
+        .countdown-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin: 40px auto;
+            max-width: 900px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .countdown-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #ffdd59;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 25px 15px;
+            min-width: 150px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .countdown-value {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ffdd59;
+            text-shadow: 0 0 15px rgba(255, 221, 89, 0.5);
+        }
+        
+        .countdown-label {
+            font-size: 1.3rem;
+            margin-top: 10px;
+            color: #e0e0e0;
+        }
+        
+        .progress-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 900px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .progress-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ffdd59;
+        }
+        
+        .progress-bar {
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #ff9f1a, #ffdd59);
+            border-radius: 15px;
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+        }
+        
+        .facts-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .fact-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            width: 280px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .fact-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .fact-icon {
+            font-size: 2.5rem;
+            color: #ffdd59;
+            margin-bottom: 15px;
+        }
+        
+        .fact-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #ffdd59;
+        }
+        
+        .fact-text {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .footer {
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .new-year-message {
+            font-size: 2rem;
+            color: #ffdd59;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: none;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .year-display {
+                font-size: 6rem;
+            }
+            
+            .countdown-item {
+                min-width: 120px;
+                padding: 20px 10px;
+            }
+            
+            .countdown-value {
+                font-size: 3rem;
+            }
+            
+            .countdown-label {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .countdown {
+                gap: 10px;
+            }
+            
+            .countdown-item {
+                min-width: 80px;
+                padding: 15px 5px;
+            }
+            
+            .countdown-value {
+                font-size: 2.5rem;
+            }
+        }
