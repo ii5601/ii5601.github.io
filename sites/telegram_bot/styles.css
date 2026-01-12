@@ -1,0 +1,469 @@
+:root {
+    --primary: #5865F2;
+    --primary-dark: #4752C4;
+    --secondary: #2C2F33;
+    --accent: #57F287;
+    --light: #F6F6F6;
+    --dark: #23272A;
+    --danger: #ED4245;
+    --gray: #99AAB5;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, var(--secondary), var(--dark));
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 20px 0;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.logo-icon {
+    font-size: 3rem;
+    color: var(--primary);
+}
+
+.logo-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    color: var(--gray);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    color: var(--accent);
+}
+
+.card-title i {
+    font-size: 1.2rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.2);
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+    font-family: monospace;
+}
+
+.form-info {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.form-info i {
+    color: var(--accent);
+}
+
+.btn {
+    padding: 16px 32px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, var(--primary), var(--primary-dark));
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(88, 101, 242, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+    background: var(--gray);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.preview-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    border-left: 4px solid var(--primary);
+    display: none;
+}
+
+.preview-title {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.preview-content {
+    color: var(--light);
+    line-height: 1.6;
+}
+
+.status-message {
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: none;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-message.success {
+    background: rgba(87, 242, 135, 0.1);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+
+.status-message.error {
+    background: rgba(237, 66, 69, 0.1);
+    border: 1px solid var(--danger);
+    color: var(--danger);
+}
+
+.status-message.info {
+    background: rgba(88, 101, 242, 0.1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+.history-section {
+    margin-top: 30px;
+}
+
+.history-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 15px;
+}
+
+.history-item {
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--accent);
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-content {
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.history-time {
+    color: var(--gray);
+    font-size: 0.8rem;
+}
+
+.clear-history {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.clear-history-btn {
+    background: none;
+    border: none;
+    color: var(--gray);
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: var(--transition);
+}
+
+.clear-history-btn:hover {
+    color: var(--danger);
+}
+
+.instructions {
+    margin-top: 40px;
+}
+
+.instructions-list {
+    list-style-type: none;
+    margin-top: 15px;
+}
+
+.instructions-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.instructions-list li i {
+    color: var(--accent);
+    margin-top: 3px;
+}
+
+.telegram-optimized {
+    background: rgba(0, 136, 204, 0.1);
+    border: 1px solid rgba(0, 136, 204, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.telegram-icon {
+    font-size: 2rem;
+    color: #0088CC;
+}
+
+.telegram-text h4 {
+    color: #0088CC;
+    margin-bottom: 5px;
+}
+
+.telegram-text p {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* Для Telegram WebApp */
+.tg-header {
+    background: var(--primary);
+    color: white;
+    padding: 15px;
+    border-radius: 15px 15px 0 0;
+    margin: -30px -30px 30px -30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: none;
+    /* Скрыто по умолчанию, показывается только в Telegram */
+}
+
+.tg-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.tg-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(88, 101, 242, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(88, 101, 242, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(88, 101, 242, 0);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .logo-text {
+        font-size: 2rem;
+    }
+
+    .logo-icon {
+        font-size: 2.5rem;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .logo {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 14px 20px;
+    }
+}
+
+/* Стили для Telegram Mini App */
+.tg-theme-dark {
+    background: #18222D;
+    color: #FFFFFF;
+}
+
+.tg-theme-light {
+    background: #FFFFFF;
+    color: #000000;
+}
+
+/* Скрыть некоторые элементы в Telegram */
+body.tg-app .telegram-optimized,
+body.tg-app .instructions {
+    display: none;
+}
+
+body.tg-app .tg-header {
+    display: flex;
+}

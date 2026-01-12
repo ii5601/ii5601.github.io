@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отправка сообщений в Discord</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
+    <script src="./script.js"></script>
+<body>
+    <!-- Telegram WebApp заголовок (виден только в Telegram) -->
+    <div class="tg-header" id="tgHeader">
+        <div class="tg-title">Отправка в Discord</div>
+        <button class="tg-close" id="tgCloseBtn">×</button>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fab fa-discord logo-icon"></i>
+                <div class="logo-text">Предложка ii5601</div>
+            </div>
+            <p class="subtitle"></p>
+        </div>
+        
+        <!-- Основная форма -->
+        <div class="card">
+            <h3 class="card-title">
+                <i class="fas fa-paper-plane"></i>
+                Отправить сообщение
+            </h3>
+            
+            <div class="form-group">
+                <label for="message" class="form-label">Сообщение *</label>
+                <textarea 
+                    id="message" 
+                    class="form-control" 
+                    placeholder="Введите ваше сообщение здесь..."
+                    required
+                ></textarea>
+                <div class="form-info">
+                    <i class="fas fa-lightbulb"></i>
+                    Поддерживается Markdown: **жирный**, *курсив*, ~~зачёркнутый~~
+                </div>
+            </div>
+            
+            <button id="sendBtn" class="btn btn-primary pulse">
+                <i class="fas fa-paper-plane"></i>
+                Отправить
+            </button>
+            
+            <button id="previewBtn" class="btn btn-secondary" style="margin-top: 15px;">
+                <i class="fas fa-eye"></i>
+                Предпросмотр
+            </button>
+        </div>
+        
+        <!-- Предпросмотр сообщения -->
+        <div class="preview-card" id="previewCard">
+            <div class="preview-title">Предпросмотр сообщения:</div>
+            <div class="preview-content" id="previewContent"></div>
+        </div>
+        
+        <!-- Статус отправки -->
+        <div class="status-message" id="statusMessage">
+            <i class="fas fa-check-circle"></i>
+            <span id="statusText"></span>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2026 Discord Webhook Sender | Для работы требуется корректный Discord Webhook URL</p>
+    </div>
+</body>
+</html>
