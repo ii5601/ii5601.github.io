@@ -78,7 +78,7 @@ function initEventListeners() {
 
 // Отправка сообщения в Discord
 async function sendToDiscord() {
-    const webhookUrl = "https://discord.com/api/webhooks/1460236798499225673/LsXBtRwlvDDhMzYX2JYI1c_KI0wIC2QewRtdPWfhbQ0PJPOTEi1aL-56HD8eWzeqBQBA";
+    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
     const username = window.Telegram.WebApp.username;
     const avatarUrl = window.Telegram.WebApp.photo_url;
     const message = document.getElementById('message').value.trim();
@@ -242,10 +242,10 @@ function animateElements() {
 
 // Генерация URL для Telegram бота
 function generateTelegramUrl() {
-    const webhookUrl = encodeURIComponent(document.getElementById('webhookUrl').value.trim());
-    const username = encodeURIComponent(document.getElementById('username').value.trim());
+    const webhookUrl = encodeURIComponent(process.env.DISCORD_WEBHOOK_URL);
+    const username = encodeURIComponent(window.Telegram.WebApp.username);
     const message = encodeURIComponent(document.getElementById('message').value.trim());
-    const avatarUrl = encodeURIComponent(document.getElementById('avatarUrl').value.trim());
+    const avatarUrl = encodeURIComponent(window.Telegram.WebApp.photo_url);
 
     // Формируем URL для быстрого доступа из Telegram
     const currentUrl = window.location.origin + window.location.pathname;
@@ -260,4 +260,4 @@ function generateTelegramUrl() {
 }
 
 // Для отладки: выводим сгенерированный URL в консоль
-console.log('Для Telegram бота используйте URL:', generateTelegramUrl());
+console.log('Для Telegram бота используйте URL: [REDACTED]');
