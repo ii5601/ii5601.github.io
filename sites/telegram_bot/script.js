@@ -1,15 +1,7 @@
-// Конфигурация
-const CONFIG = {
-    TELEGRAM_PARAMS: ['message']
-};
-
 // Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', function () {
     // Определяем, открыто ли в Telegram WebApp
     detectTelegramWebApp();
-
-    // Проверяем параметры URL (для Telegram бота)
-    checkUrlParams();
 
     // Анимация появления
     animateElements();
@@ -35,31 +27,6 @@ function detectTelegramWebApp() {
     }
 }
 
-// Проверка параметров URL (для Telegram бота)
-function checkUrlParams() {
-    const urlParams = new URLSearchParams(window.location.search);
-
-    // Проверяем наличие параметров
-    CONFIG.TELEGRAM_PARAMS.forEach(param => {
-        const value = urlParams.get(param);
-
-        if (value) {
-            switch (param) {
-                case 'message':
-                    document.getElementById('message').value = decodeURIComponent(value);
-                    break;
-            }
-        }
-    });
-
-    // Автоотправка, если есть параметр auto=1
-    if (urlParams.get('auto') === '1' && document.getElementById('message').value) {
-        setTimeout(() => {
-            sendToDiscord();
-        }, 1000);
-    }
-}
-
 // Инициализация обработчиков событий
 function initEventListeners() {
     // Кнопка отправки
@@ -80,7 +47,6 @@ function initEventListeners() {
 async function sendToDiscord() {
     const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
     const username = window.Telegram.WebApp.username;
-    const avatarUrl = window.Telegram.WebApp.photo_url;
     const message = document.getElementById('message').value.trim();
 
     // Валидация
@@ -104,10 +70,6 @@ async function sendToDiscord() {
         payload.username = username;
     }
 
-    if (avatarUrl) {
-        payload.avatar_url = avatarUrl;
-    }
-
     try {
         // Отправляем запрос
         const response = await fetch(webhookUrl, {
@@ -121,44 +83,18 @@ async function sendToDiscord() {
         if (response.ok) {
             showStatus('Сообщение успешно отправлено в Discord!', 'success');
 
-            // Добавляем в историю
-            addToHistory(message, true);
-
             // Очищаем поле сообщения
             document.getElementById('message').value = '';
 
             // Скрываем предпросмотр
             document.getElementById('previewCard').style.display = 'none';
-
-            // Сохраняем данные
-            saveToStorage();
-
-            // Если в Telegram WebApp, отправляем feedback
-            if (window.Telegram && window.Telegram.WebApp) {
-                window.Telegram.WebApp.HapticFeedback.notificationOccurred('success');
-
-                // Закрываем через 2 секунды, если был параметр auto
-                const urlParams = new URLSearchParams(window.location.search);
-                if (urlParams.get('auto') === '1') {
-                    setTimeout(() => {
-                        window.Telegram.WebApp.close();
-                    }, 2000);
-                }
-            }
         } else {
             const errorText = await response.text();
             showStatus(`Ошибка отправки: ${response.status} ${response.statusText}`, 'error');
             console.error('Discord API Error:', errorText);
-
-            // Добавляем в историю как неудачную
-            addToHistory(`Ошибка: ${message.substring(0, 50)}...`, false);
         }
     } catch (error) {
-        showStatus(`Ошибка сети: ${error.message}`, 'error');
         console.error('Network Error:', error);
-
-        // Добавляем в историю как неудачную
-        addToHistory(`Сеть: ${message.substring(0, 50)}...`, false);
     } finally {
         // Восстанавливаем кнопку
         sendBtn.innerHTML = originalText;
@@ -169,7 +105,7 @@ async function sendToDiscord() {
 // Предпросмотр сообщения
 function showPreview() {
     const message = document.getElementById('message').value.trim();
-    const username = document.getElementById('username').value.trim() || 'Пользователь';
+    const username = window.Telegram.WebApp.username;
 
     if (!message) {
         showStatus('Введите сообщение для предпросмотра', 'info');
@@ -226,7 +162,7 @@ function showStatus(text, type = 'info') {
 
 // Анимация элементов при загрузке
 function animateElements() {
-    const elements = document.querySelectorAll('.card, .header, .footer');
+    const elements = document.querySelectorAll('.card, .footer');
 
     elements.forEach((element, index) => {
         element.style.opacity = '0';
@@ -239,25 +175,3 @@ function animateElements() {
         }, 100 * index);
     });
 }
-
-// Генерация URL для Telegram бота
-function generateTelegramUrl() {
-    const webhookUrl = encodeURIComponent(process.env.DISCORD_WEBHOOK_URL);
-    const username = encodeURIComponent(window.Telegram.WebApp.username);
-    const message = encodeURIComponent(document.getElementById('message').value.trim());
-    const avatarUrl = encodeURIComponent(window.Telegram.WebApp.photo_url);
-
-    // Формируем URL для быстрого доступа из Telegram
-    const currentUrl = window.location.origin + window.location.pathname;
-    const params = [];
-
-    if (webhookUrl) params.push(`webhook=${webhookUrl}`);
-    if (username) params.push(`username=${username}`);
-    if (message) params.push(`message=${message}`);
-    if (avatarUrl) params.push(`avatar=${avatarUrl}`);
-
-    return params.length > 0 ? `${currentUrl}?${params.join('&')}` : currentUrl;
-}
-
-// Для отладки: выводим сгенерированный URL в консоль
-console.log('Для Telegram бота используйте URL: [REDACTED]');
