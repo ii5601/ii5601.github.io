@@ -68,12 +68,6 @@ body {
     color: transparent;
 }
 
-.subtitle {
-    color: var(--tg-theme-hint-color);
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-}
-
 .card {
     background: rgba(255, 255, 255, 0.08);
     border-radius: 15px;
@@ -136,7 +130,7 @@ textarea.form-control {
 
 .form-info {
     font-size: 0.9rem;
-    color: var(--gray);
+    color: var(--tg-theme-hint-color);
     margin-top: 5px;
     display: flex;
     align-items: center;
@@ -164,8 +158,8 @@ textarea.form-control {
 }
 
 .btn-primary {
-    background: linear-gradient(to right, var(--primary), var(--primary-dark));
-    color: var(--tg-theme-button-color);
+    background: var(--tg-theme-button-color);
+    color: var(--button_text_color);
 }
 
 .btn-primary:hover {
@@ -259,7 +253,7 @@ textarea.form-control {
 .footer {
     text-align: center;
     margin-top: 30px;
-    color: var(--gray);
+    color: var(--bottom_bar_bg_color);
     font-size: 0.9rem;
 }
 
